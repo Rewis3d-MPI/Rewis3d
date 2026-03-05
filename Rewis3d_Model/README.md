@@ -45,7 +45,9 @@ cd Rewis3d_Model
 
 # Create environment from environment.yml
 micromamba create -f environment.yml
-micromamba activate pointcept-torch2.5.0-cu12.4
+micromamba activate rewis3dModel
+bash install_ops.sh
+
 
 # Build CUDA extensions (pointops, pointgroup_ops)
 # These are automatically built via pip install in environment.yml

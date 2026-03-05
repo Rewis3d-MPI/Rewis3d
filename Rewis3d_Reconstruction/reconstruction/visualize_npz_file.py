@@ -1,15 +1,14 @@
 import numpy as np
 import open3d as o3d
 import yaml
-from .label_utils import create_label_mappings
-import cv2
+from label_utils import create_label_mappings
 
 # Load config for label mappings
-config_path = "reconstruction/config/test.yaml"
+config_path = "config/test.yaml"
 with open(config_path, "r") as f:
     config = yaml.safe_load(f)
 
-path = "/scratch/inf0/user/jernst/Datasets/KITTI360MapAnything100Chunk10Conf70ratio/training/2013_05_28_drive_0000_sync_172_image_1.npz"
+path = "/KITTI360MapAnything100Chunk10Conf70ratiov2/training/2013_05_28_drive_0009_sync_9046_cam1_image_1.npz"
 
 data = np.load(path, allow_pickle=True)
 

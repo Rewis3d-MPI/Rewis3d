@@ -1,5 +1,5 @@
-import os
 import glob
+import os
 import re
 from collections import defaultdict
 
@@ -78,9 +78,10 @@ def uniform_sampling(images, n, keep_all_labeled=False, label_detection_patterns
     Returns:
         list: Sampled images
     """
-    import numpy as np
-    import os
     import glob
+    import os
+
+    import numpy as np
 
     if len(images) <= n:
         return images

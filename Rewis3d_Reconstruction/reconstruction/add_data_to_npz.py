@@ -25,9 +25,9 @@ Notes:
 import argparse
 import os
 import re
+import shutil
 import sys
 import tempfile
-import shutil
 from typing import Optional, Tuple
 
 import numpy as np

@@ -32,7 +32,7 @@ from torchvision.transforms import (
     AugMix,
 )
 
-from transformers import SegformerFeatureExtractor
+from transformers import SegformerImageProcessor as SegformerFeatureExtractor
 
 from PIL import Image
 

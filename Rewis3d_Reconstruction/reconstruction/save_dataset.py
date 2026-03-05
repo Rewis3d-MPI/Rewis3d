@@ -1,8 +1,10 @@
-import numpy as np
 import os
 import re
-from tqdm import tqdm
+
+import numpy as np
 from PIL import Image
+from tqdm import tqdm
+
 from .point_sampling import (
     sample_indices_random_radius,
     sample_indices_random_uniform,

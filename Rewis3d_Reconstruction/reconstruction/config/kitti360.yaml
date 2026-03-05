@@ -1,6 +1,6 @@
 dataset:
-  dataset_dir: "/BS/segmentation-2D3D-dataset/KITTI360/"
-  output_dir: "/scratch/inf0/user/jernst/Datasets/KITTI360MapAnything100Chunk10Conf70ratio"
+  dataset_dir: "/segmentation-2D3D-dataset/KITTI360/"
+  output_dir: "/KITTI360MapAnything100Chunk10Conf70ratiov2"
   splits: ["training","validation"]
   num_cameras: 1
   file_extension: "png"
@@ -16,7 +16,7 @@ reconstruction:
 point_sampling:
   method: "random_radius"
   num_points: 120000
-  image_ratio: 1.0
+  image_ratio: 0.7
 
 preprocessing:
   image_scale_factor: 1.0   # Scale factor for resizing images (e.g., 0.5 for half size, 1.0 for no resizing)

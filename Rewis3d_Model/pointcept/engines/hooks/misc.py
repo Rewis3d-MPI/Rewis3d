@@ -399,7 +399,9 @@ class CheckpointLoader(HookBase):
             self.trainer.logger.info(f"Loading weight at: {self.trainer.cfg.weight}")
             checkpoint = torch.load(
                 self.trainer.cfg.weight,
-                map_location=lambda storage, loc: storage.cuda(),
+                weights_only=False,
+                map_location=lambda storage,
+                loc: storage.cuda(),
             )
 
             # Load 3D model weights

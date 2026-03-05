@@ -1,14 +1,15 @@
 import argparse
-import os
 import json
+import os
 import time
+
 import yaml
 from tqdm import tqdm
 
-from .image_loading import load_images
 from .create_reconstructions import generate_reconstruction
+from .image_loading import load_images
 from .pointcloud_processing import create_unified_pointcloud
-from .save_dataset import save_dataset_for_chunk, generate_output_filename
+from .save_dataset import generate_output_filename, save_dataset_for_chunk
 
 
 def parse_config():
@@ -234,9 +235,9 @@ def worker_process_chunks(
         ckpt_dir (str): Checkpoint directory path
         output_dir (str): Output directory path
     """
+    import json
     import os
     import time
-    import json
 
     def _extract_split(image_path: str):
         parts = image_path.split(os.sep)
