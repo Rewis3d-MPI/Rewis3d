@@ -1,0 +1,87 @@
+dataset:
+  dataset_dir: "/BS/segmentation-2D3D-dataset/WaymoFigure4/"
+  output_dir: "/scratch/inf0/user/jernst/Datasets/WaymoFig4/"
+  splits: ["training","validation"]
+  num_cameras: 3            # Total number of camera streams available per frame
+  cameras_to_use: [1,2,3]          # If num_cameras == 1, specify which camera index to use (1-based)
+  file_extension: "jpg"
+
+sampling:
+  strategy: "chunk"         # One of: chunk, random, uniform
+  num_images: 180           # For chunk: max chunk size target; for random/uniform: number of images
+  n_interval: 1             # Keep every n-th frame group (applied per frame across cameras)
+  keep_all_labeled: true    # If true, frames with labels are kept even if skipped by interval
+  min_masks_per_chunk: 1
+  
+reconstruction:
+  method: "map_anything"
+  confidence_percentile: 10
+
+point_sampling:
+  method: "random_radius"
+  num_points: 120000
+  image_ratio: 0.7
+
+preprocessing:
+  image_scale_factor: 0.5   # Scale factor for resizing images (e.g., 0.5 for half size, 1.0 for no resizing)
+
+# Mask file naming configuration (default Waymo setup)
+masks:
+  # 2D masks saved in NPZ data_2d
+  student_mask_2d: "scribble_{cam_id}.png"       # For student_mask_1 in 2D
+  original_mask_2d: "mask_{cam_id}.png"          # For original_mask_1 in 2D
+  
+  # 3D segments saved in NPZ data_3d  
+  student_segment_3d: "scribble_{cam_id}.png"    # For student_segment in 3D
+  original_segment_3d: "mask_{cam_id}.png"       # For original_segment in 3D
+
+labels:
+  ignore_index: 255
+  class_definitions:
+    - ["undefined", 0, 255, [0, 0, 0]]
+    - ["ego vehicle", 1, 255, [0, 0, 0]]
+    - ["car", 2, 0, [0, 0, 142]]
+    - ["truck", 3, 1, [0, 0, 70]]
+    - ["bus", 4, 2, [0, 60, 100]]
+    - ["other large vehicle", 5, 3, [0, 0, 90]]
+    - ["bicycle", 6, 4, [119, 11, 32]]
+    - ["motorcycle", 7, 5, [0, 0, 230]]
+    - ["trailer", 8, 6, [0, 0, 110]]
+    - ["pedestrian", 9, 7, [220, 20, 60]]
+    - ["cyclist", 10, 8, [255, 0, 0]]
+    - ["motorcyclist", 11, 9, [235, 0, 0]]
+    - ["bird", 12, 10, [135, 206, 250]]
+    - ["ground animal", 13, 11, [139, 69, 19]]
+    - ["construction cone pole", 14, 12, [133, 133, 133]]
+    - ["pole", 15, 13, [153, 153, 153]]
+    - ["pedestrian object", 16, 14, [90, 34, 10]]
+    - ["sign", 17, 15, [220, 220, 0]]
+    - ["traffic light", 18, 16, [250, 170, 30]]
+    - ["building", 19, 17, [70, 70, 70]]
+    - ["road", 20, 18, [128, 64, 128]]
+    - ["lane marker", 21, 22, [200, 200, 200]]
+    - ["road marker", 22, 23, [180, 180, 180]]
+    - ["sidewalk", 23, 19, [244, 35, 232]]
+    - ["vegetation", 24, 20, [107, 142, 35]]
+    - ["sky", 25, 24, [70, 130, 180]]
+    - ["ground", 26, 21, [152, 251, 152]]
+    - ["dynamic object", 27, 255, [111, 74, 0]]
+    - ["static object", 28, 255, [0, 0, 0]]
+    - ["caravan", 29, 255, [0, 0, 90]]
+    - ["trailer", 30, 255, [0, 0, 110]]
+    - ["train", 31, 255, [0, 80, 100]]
+    - ["motorcycle", 32, 13, [0, 0, 230]]
+    - ["bicycle", 33, 14, [119, 11, 32]]
+    - ["garage", 34, 2, [64, 128, 128]]
+    - ["gate", 35, 4, [190, 153, 153]]
+    - ["stop", 36, 255, [150, 120, 90]]
+    - ["smallpole", 37, 5, [153, 153, 153]]
+    - ["lamp", 38, 255, [0, 64, 64]]
+    - ["trash bin", 39, 255, [0, 128, 192]]
+    - ["vending machine", 40, 255, [128, 64, 0]]
+    - ["box", 41, 255, [64, 64, 128]]
+    - ["unknown construction", 42, 255, [102, 0, 0]]
+    - ["unknown vehicle", 43, 255, [51, 0, 51]]
+    - ["unknown object", 44, 255, [32, 32, 32]]
+    - ["license plate", 45, 255, [0, 0, 142]]
+

@@ -1,0 +1,92 @@
+dataset:
+  dataset_dir: "/BS/segmentation-2D3D-dataset-indoor/NYUv2/NYUD_Structured_Dataset_All_RGB/"
+  output_dir: "/scratch/inf0/user/jernst/Datasets/NYUv2_MA/"
+  splits: ["training","validation"]
+  num_cameras: 1            # Total number of camera streams available per frame
+  cameras_to_use: [1]          # If num_cameras == 1, specify which camera index to use (1-based)
+  file_extension: "png"
+
+sampling:
+  strategy: "uniform"           # Use uniform sampling
+  num_images: 180               # Target sample size
+  keep_all_labeled: true        # If true, frames with labels are kept even if skipped by interval
+  min_masks_per_chunk: 1
+  # Patterns used to detect whether a frame folder is labeled (kept even when sub-sampling)
+  label_detection_patterns:
+    - "mask_*"
+    - "*_mask.*"
+    - "sam_mask_*"     # include SAM masks
+    - "scribble_*"     # optionally treat scribbles as labels too
+  # Patterns used when counting masks per chunk (for filtering); include SAM masks
+  mask_patterns:
+    - "mask_*"
+    - "*_mask.*"
+    - "sam_mask_*"
+  
+  
+reconstruction:
+  method: "map_anything"
+  confidence_percentile: 10
+
+point_sampling:
+  method: "random_radius"
+  num_points: 120000
+  image_ratio: 0.7
+
+preprocessing:
+  image_scale_factor: 1   # Scale factor for resizing images (e.g., 0.5 for half size, 1.0 for no resizing)
+
+# Mask file naming configuration
+masks:
+  # 2D masks saved in NPZ data_2d
+  student_mask_2d: "scribble_{cam_id}.png"      # For student_mask_1 in 2D
+  original_mask_2d: "mask_40.png"                # For original_mask_1 in 2D
+  
+  # 3D segments saved in NPZ data_3d  
+  student_segment_3d: "scribble_{cam_id}.png"    # For student_segment in 3D
+  original_segment_3d: "mask_40.png"             # For original_segment in 3D
+
+labels:
+  ignore_index: 255
+  class_definitions:
+    - ["background", 0, 0, [128, 0, 0]]
+    - ["wall", 1, 1, [0, 128, 0]]
+    - ["floor", 2, 2, [128, 128, 0]]
+    - ["cabinet", 3, 3, [0, 0, 128]]
+    - ["bed", 4, 4, [128, 0, 128]]
+    - ["chair", 5, 5, [0, 128, 128]]
+    - ["sofa", 6, 6, [128, 128, 128]]
+    - ["table", 7, 7, [64, 0, 0]]
+    - ["door", 8, 8, [192, 0, 0]]
+    - ["window", 9, 9, [64, 128, 0]]
+    - ["bookshelf", 10, 10, [192, 128, 0]]
+    - ["picture", 11, 11, [64, 0, 128]]
+    - ["counter", 12, 12, [192, 0, 128]]
+    - ["desk", 13, 13, [64, 128, 128]]
+    - ["shelves", 14, 14, [192, 128, 128]]
+    - ["curtain", 15, 15, [0, 64, 0]]
+    - ["dresser", 16, 16, [128, 64, 0]]
+    - ["pillow", 17, 17, [0, 192, 0]]
+    - ["mirror", 18, 18, [128, 192, 0]]
+    - ["floor mat", 19, 19, [0, 64, 128]]
+    - ["clothes", 20, 20, [128, 64, 128]]
+    - ["ceiling", 21, 21, [0, 192, 128]]
+    - ["books", 22, 22, [128, 192, 128]]
+    - ["refrigerator", 23, 23, [64, 64, 0]]
+    - ["television", 24, 24, [192, 64, 0]]
+    - ["paper", 25, 25, [64, 192, 0]]
+    - ["towel", 26, 26, [192, 192, 0]]
+    - ["blinds", 27, 27, [64, 64, 128]]
+    - ["box", 28, 28, [192, 64, 128]]
+    - ["whiteboard", 29, 29, [64, 192, 128]]
+    - ["person", 30, 30, [192, 192, 128]]
+    - ["nightstand", 31, 31, [0, 0, 64]]
+    - ["toilet", 32, 32, [128, 0, 64]]
+    - ["sink", 33, 33, [0, 128, 64]]
+    - ["lamp", 34, 34, [128, 128, 64]]
+    - ["bathtub", 35, 35, [0, 0, 192]]
+    - ["bag", 36, 36, [128, 0, 192]]
+    - ["otherstructure", 37, 37, [0, 128, 192]]
+    - ["otherfurniture", 38, 38, [128, 128, 192]]
+    - ["otherprop", 39, 39, [64, 0, 64]]
+
