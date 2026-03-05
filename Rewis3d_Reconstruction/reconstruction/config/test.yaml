@@ -1,6 +1,6 @@
 dataset:
-  dataset_dir: "/BS/segmentation-2D3D-dataset/KITTI360/"
-  output_dir: "/scratch/inf0/user/jernst/Datasets/test"
+  dataset_dir: "segmentation-2D3D-dataset/KITTI360/"
+  output_dir: "Datasets/test"
   splits: ["training"]
   num_cameras: 1
   file_extension: "png"

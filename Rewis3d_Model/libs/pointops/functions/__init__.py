@@ -1,3 +1,8 @@
+# Copyright (c) 2026 Max Planck Institute for Informatics
+# Authors: Jonas Ernst, Wolfgang Boettcher
+# Licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0).
+# See LICENSE file in the project root for details.
+
 from .query import knn_query, ball_query, random_ball_query
 from .sampling import farthest_point_sampling
 from .grouping import grouping, grouping2

@@ -1,6 +1,6 @@
 dataset:
-  dataset_dir: "/BS/segmentation-2D3D-dataset/WaymoSupplementary/"
-  output_dir: "/scratch/inf0/user/jernst/Datasets/WaymoSupplementary/"
+  dataset_dir: "segmentation-2D3D-dataset/WaymoSupplementary/"
+  output_dir: "Datasets/WaymoSupplementary/"
   splits: ["training"]
   num_cameras: 3            # Total number of camera streams available per frame
   cameras_to_use: [1]          # If num_cameras == 1, specify which camera index to use (1-based)

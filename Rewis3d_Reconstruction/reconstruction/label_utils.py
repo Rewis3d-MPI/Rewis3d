@@ -1,3 +1,8 @@
+# Copyright (c) 2026 Max Planck Institute for Informatics
+# Authors: Jonas Ernst, Wolfgang Boettcher
+# Licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0).
+# See LICENSE file in the project root for details.
+
 """
 Label mapping utilities for KITTI360 dataset.
 Creates various ID mappings and color maps from the config file.

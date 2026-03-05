@@ -1,6 +1,6 @@
 dataset:
-  dataset_dir: "/segmentation-2D3D-dataset-indoor/NYUv2/NYUD_Structured_Dataset_All_RGB/"
-  output_dir: "/NYUv2_MA/"
+  dataset_dir: "segmentation-2D3D-dataset-indoor/NYUv2/NYUD_Structured_Dataset_All_RGB/"
+  output_dir: "NYUv2_MA/"
   splits: ["training","validation"]
   num_cameras: 1            # Total number of camera streams available per frame
   cameras_to_use: [1]          # If num_cameras == 1, specify which camera index to use (1-based)

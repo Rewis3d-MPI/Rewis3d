@@ -1,5 +1,5 @@
 dataset:
-  dataset_dir: "/segmentation-2D3D-dataset/WaymoFull/"
+  dataset_dir: "segmentation-2D3D-dataset/WaymoFull/"
   output_dir: "WaymoMapAnything180Chunk10Conf70ratio4interval/"
   splits: ["training","validation"]
   num_cameras: 3            # Total number of camera streams available per frame

@@ -1,6 +1,6 @@
 dataset:
-  dataset_dir: "/BS/segmentation-2D3D-dataset-indoor/cityscapes_converted/"
-  output_dir: "/scratch/inf0/user/jernst/Datasets/CityscapesSingleImageCoarse/"
+  dataset_dir: "segmentation-2D3D-dataset-indoor/cityscapes_converted/"
+  output_dir: "Datasets/CityscapesSingleImageCoarse/"
   splits: ["training","validation"]
   num_cameras: 1
   file_extension: "png"
