@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Rewis3d: Reconstruction for Weakly-Supervised Semantic Segmentation">
+  <meta name="keywords" content="Rewis3d, Semantic Segmentation, Weak Supervision, 3D Reconstruction, CVPR">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rewis3d: Reconstruction for Weakly-Supervised Semantic Segmentation</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="icon_small.jpeg" type="image/jpeg">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><span class="title-accent">Rewis3d</span>: Reconstruction for Weakly-Supervised Semantic Segmentation</h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="#">Jonas Ernst</a><sup>*1,2</sup>,</span>
+            <span class="author-block">
+              <a href="https://wbkit.github.io/">Wolfgang Boettcher</a><sup>*2</sup>,</span>
+            <span class="author-block">
+              <a href="https://lhoyer.github.io/">Lukas Hoyer</a><sup>3</sup>,</span>
+            <span class="author-block">
+              <a href="https://janericlenssen.github.io/">Jan Eric Lenssen</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/bernt-schiele">Bernt Schiele</a><sup>2</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors publication-affiliations">
+            <span class="author-block"><sup>1</sup>Saarland University, Germany</span>
+            <span class="author-block"><sup>2</sup>Max Planck Institute for Informatics, Germany</span>
+            <span class="author-block"><sup>3</sup>ETH Zurich, Switzerland</span>
+          </div>
+
+          <div class="publication-venue">
+            <span>CVPR 2025</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2603.06374"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2603.06374"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://github.com/Rewis3d-MPI/Rewis3d"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img class="figure-full figure-rounded" src="./figures/fig1.jpg" alt="Rewis3d Teaser">
+        <h2 class="subtitle has-text-centered teaser-subtitle">
+          <span class="dnerf">Rewis3d</span> leverages reconstructed 3D point clouds to bridge the supervision gap in weakly-supervised 2D semantic segmentation. By enforcing consistency between 2D predictions and 3D geometry, we achieve state-of-the-art results using only sparse annotations like scribbles or points.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Obtaining dense, pixel-level annotations remains a costly bottleneck for training segmentation models. Alleviating this issue, sparse annotations offer an efficient weakly-supervised alternative, but they still incur a performance gap.
+          </p>
+          <p>
+            To address this, we introduce <strong>Rewis3d</strong>, a novel approach that leverages 3D scene reconstruction as an auxiliary supervisory signal. Our key insight is that 3D geometric structure recovered from 2D videos provides strong cues that can propagate sparse annotations across entire scenes. Specifically, a dual student-teacher architecture enforces semantic consistency between 2D images and reconstructed 3D point clouds, using state-of-the-art feed-forward reconstruction to generate reliable geometric supervision.
+          </p>
+          <p>
+            Extensive experiments demonstrate that Rewis3d achieves state-of-the-art performance in sparse supervision, outperforming existing approaches by <strong>2-7%</strong> without requiring additional labels or inference overhead.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered section-block">
+        <div class="column is-full-width">
+            <h2 class="title is-3">Method Overview</h2>
+            <div class="content has-text-justified">
+                <p>
+                    The core principle of Rewis3d is to utilize 3D geometry as a bridge for consistency. While traditional WSSS methods operate solely in the 2D plane, our method reconstructs a point cloud from the input video sequence (using <em>MapAnything</em>) and enforces a <strong>Cross-Modal Consistency (CMC)</strong> loss.
+                </p>
+            </div>
+            
+            <img class="figure-66 figure-rounded figure-shadow section-lead" src="./figures/fig3.jpg" alt="Rewis3d Architecture">
+             <div class="content has-text-justified">
+                <p>
+                    Our pipeline consists of two main branches:
+                </p>
+                <ul>
+                    <li><strong>2D & 3D Dual Student-Teachers:</strong> Both modalities maintain a student-teacher setup. The teacher models generate stable pseudo-labels to supervise the students.</li>
+                    <li><strong>Cross-Modal Consistency (CMC):</strong> We project 3D predictions to 2D and unproject 2D predictions to 3D. A dual-confidence mechanism weights this supervision based on both prediction certainty and 3D reconstruction quality.</li>
+                    <li><strong>View-Aware Sampling:</strong> To handle massive point clouds, we sample points dynamically based on the current camera view, ensuring dense correspondences for the loss calculation while maintaining global context.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="columns is-centered has-text-centered section-block">
+        <div class="column is-full-width">
+            <h2 class="title is-3">Results</h2>
+        <p class="section-lead">
+                Rewis3d consistently outperforms previous state-of-the-art methods across multiple datasets (Waymo, KITTI-360, NYUv2, Cityscapes) and various annotation types (points, scribbles, coarse labels).
+            </p>
+            
+        <img class="figure-80 figure-rounded figure-shadow" src="./figures/tab1.jpg" alt="Quantitative Results">
+        <div class="content has-text-justified section-space">
+                <p>
+                    Notably, using <strong>reconstructed</strong> 3D geometry often outperforms using ground-truth LiDAR (Real 3D). This is because reconstructions provide denser point clouds and allow for our confidence-based filtering of geometric noise.
+                </p>
+            </div>
+
+        <h3 class="title is-3 section-block">Qualitative Comparison</h3>
+        <img class="figure-full figure-rounded figure-shadow" src="./figures/fig5.jpg" alt="Qualitative Results">
+         <p class="is-size-6 section-caption">
+                Comparison on Waymo, Cityscapes, and KITTI-360. Rewis3d produces sharper boundaries and better long-range consistency compared to baselines like EMA and TEL.
+             </p>
+        </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <div class="bibtex-section">
+<pre><code>@article{ernst2025rewis3d,
+  title={Rewis3d: Reconstruction for Weakly-Supervised Semantic Segmentation},
+  author={Ernst, Jonas and Boettcher, Wolfgang and Hoyer, Lukas and Lenssen, Jan Eric and Schiele, Bernt},
+  journal={CVPR},
+  year={2025}
+}</code></pre>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This page was built using the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies website template</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
