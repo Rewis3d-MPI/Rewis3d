@@ -1,4 +1,9 @@
-# Rewis3d
+# Rewis3d [CVPR 2026]
+<a href="https://rewis3d-mpi.github.io/Rewis3d/#">Jonas Ernst*</a>, <a href="https://wbkit.github.io/">Wolfgang Boettcher*</a>, <a href="https://lhoyer.github.io/">Lukas Hoyer</a>, <a href="https://janericlenssen.github.io/">Jan Eric Lenssen</a>, <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/people/bernt-schiele">Bernt Schiele</a>
+
+*Max Planck Institute for Informatics, Saarland Informatics Campus*
+
+[![Website](https://img.shields.io/badge/Website-Rewis3d-blue)](https://rewis3d-mpi.github.io/Rewis3d/) [![arXiv](https://img.shields.io/badge/arXiv-Paper-red)](https://arxiv.org/abs/2603.06374)
 
 **Re**construction for **W**eakly-Supervised Semantic **S**egmentation in **3D**
 
